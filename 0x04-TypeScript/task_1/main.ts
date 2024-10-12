@@ -58,3 +58,22 @@ const myStudents = (studentsList: Array<Student>) => {
 };
 
 myStudents(studentsList);
+
+
+interface Teacher {
+    readonly firstName: string;
+    readonly lastName: string;
+    fullTimeEmployee: boolean;
+    yearsOfExperience?: number;
+    location: string;
+    [key: string]: any; // Index signature to allow additional properties
+}
+
+// Example of usage
+const teacher: Teacher = {
+    firstName: "John",
+    lastName: "Doe",
+    fullTimeEmployee: false,
+    location: "London",
+    contract: false
+    }
