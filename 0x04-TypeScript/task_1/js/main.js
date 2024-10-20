@@ -1,8 +1,8 @@
-const director1: Directors = {
+var director1 = {
     firstName: "John",
     lastName: "Doe",
     location: 'London',
     fullTimeEmployee: true,
-    numberofReports: 17,
+    numberofReports: 17
 };
 console.log(director1);

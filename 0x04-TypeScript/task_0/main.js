@@ -1,40 +1,52 @@
-var student1 = {
-    firstName: 'Jane',
-    lastName: 'Doe',
-    age: 25,
-    location: 'zion'
+"use strict";
+exports.__esModule = true;
+;
+var studentA = {
+    firstname: "Patrick",
+    lastname: "Muchiri",
+    age: 26,
+    location: "Nairobi"
 };
-var student2 = {
-    firstName: 'John',
-    lastName: 'Doe',
-    age: 27,
-    location: 'Shiganshina'
+var studentB = {
+    firstname: "Joseph",
+    lastname: "Alvin",
+    age: 22,
+    location: "Texas"
 };
-var studentsList = [student1, student2];
-var myStudents = function (studentsList) {
-    var table = document.createElement('table');
-    var thead = document.createElement('thead');
-    var headerRow = document.createElement('tr');
-    var headers = ['First Name', 'Location'];
-    headers.forEach(function (headerText) {
-        var th = document.createElement('th'); // Corrected <tbody> to <th> for headers
-        th.textContent = headerText;
-        headerRow.appendChild(th);
-    });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-    var tbody = document.createElement('tbody');
-    studentsList.forEach(function (student) {
-        var row = document.createElement('tr');
-        var nameID = document.createElement('td');
-        nameID.textContent = student.firstName;
-        row.appendChild(nameID);
-        var locationID = document.createElement('td');
-        locationID.textContent = student.location;
-        row.appendChild(locationID);
-        tbody.appendChild(row);
-    });
-    table.appendChild(tbody);
-    document.body.appendChild(table);
+var studentsList = [
+    studentA,
+    studentB,
+];
+var styleSheet = "\nhtml {\n  margin: 0;\n  height: 100%;\n}\n\nbody {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 80%;\n  margin: 10%;\n}\n\ntable {\n  border-collapse: collapse;\n}\n\nthead {\n  font-weight: bold;\n}\n\ntd {\n  padding: 10px;\n  border: 1px solid gray;\n  cursor: pointer;\n}\n\ntd:hover {\n  background: gainsboro;\n}\n\ntd:nth-child(1) {\n  text-align: center;\n}\n";
+exports.displayStudents = function (students) {
+    var table = document.createElement("table");
+    var tableHeader = document.createElement("thead");
+    var tableBody = document.createElement("tbody");
+    var tableHeaderRow = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    td1.textContent = "Firstname";
+    td2.textContent = "Location";
+    tableHeaderRow.insertAdjacentElement("beforeend", td1);
+    tableHeaderRow.insertAdjacentElement("beforeend", td2);
+    tableHeader.insertAdjacentElement("beforeend", tableHeaderRow);
+    for (var _i = 0, students_1 = students; _i < students_1.length; _i++) {
+        var student = students_1[_i];
+        var tr = document.createElement("tr");
+        var td1_1 = document.createElement("td");
+        var td2_1 = document.createElement("td");
+        td1_1.textContent = student.firstname;
+        td2_1.textContent = student.location;
+        tr.insertAdjacentElement("beforeend", td1_1);
+        tr.insertAdjacentElement("beforeend", td2_1);
+        tableBody.insertAdjacentElement("beforeend", tr);
+    }
+    table.insertAdjacentElement("beforeend", tableHeader);
+    table.insertAdjacentElement("beforeend", tableBody);
+    document.body.insertAdjacentElement("beforeend", table);
 };
-myStudents(studentsList);
+exports.displayStudents(studentsList);
+var styleSheetElement = document.createElement("style");
+styleSheetElement.innerHTML = styleSheet;
+document.head.insertAdjacentElement("beforeend", styleSheetElement);
+document.title = "Task 0";
